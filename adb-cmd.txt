@@ -1,0 +1,19 @@
+adb reboot edl
+
+ ps -A | grep camer
+rm data/vendor/camera/*
+ls data/vendor/camera/
+setprop persist.vendor.camera.dynamicImageDumpTrigger 
+
+
+adb push 'D:\Users\Desktop\camxoverridesettings.txt' /vendor/etc/camera/
+adb shell ps -A | grep camera
+adb shell kill -9 
+adb shell rm data/vendor/camera/*
+adb shell setprop persist.vendor.camera.dynamicImageDumpTrigger 
+adb pull /data/vendor/camera
+adb logcat -v time > test.log
+//nv12
+adb shell setprop persist.vendor.camera.outputFormat 0
+//ubwc
+adb shell getprop persist.vendor.camera.outputFormat 
